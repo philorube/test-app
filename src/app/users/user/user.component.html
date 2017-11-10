@@ -1,9 +1,10 @@
-<div class="card">
+<div class="card card-style">
+    <img class="card-img-top" src="{{ user.avatar_url }}"  alt=""/>
     <div class="card-body">
       <h4 class="card-title">{{ user.login }}</h4>
       <h6 class="card-subtitle text-muted">Contributions: {{ user.contributions }}</h6>
     </div>
-    <img src="{{ user.avatar_url }}"  alt="">
+    
     <div class="card-body">
       <p class="card-text">Text</p>
       <a href="{{ user.html_url }}" target="_blank" class="card-link">Github page</a>
