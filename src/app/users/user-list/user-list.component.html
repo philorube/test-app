@@ -3,7 +3,10 @@
     <h2>This is the list of contributors to the TypeScript repo</h2>
   </div>
   <div class="row">
-    <div *ngFor="let user of users">
+    <input type="text" [(ngModel)]="filterString"/>
+  </div>
+  <div class="row">
+    <div *ngFor="let user of filteredUsers">
       <app-user [user]=user></app-user>
     </div>
   </div>
