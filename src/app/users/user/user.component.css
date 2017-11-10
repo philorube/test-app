@@ -2,3 +2,11 @@
     width: 20rem;
     margin: 10px;
 }
+
+a {
+    color: green;
+}
+
+a:hover {
+    color: darkgreen;
+}
