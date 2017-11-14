@@ -17,10 +17,15 @@ import { UserService } from './users/shared/user.service';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { LoggingService } from './shared/logging.service';
+import { OrgSearchComponent } from './orgs/org-search/org-search.component';
+import { OrgCardComponent } from './orgs/org-card/org-card.component';
+import { OrgViewComponent } from './orgs/org-view/org-view.component';
+import { OrgService } from './orgs/shared/org.service';
 
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'org-search', component: OrgSearchComponent }
 ];
 
 @NgModule({
@@ -30,7 +35,10 @@ const appRoutes: Routes = [
     ProductComponent,
     ProductListComponent,
     UserComponent,
-    UserListComponent
+    UserListComponent,
+    OrgSearchComponent,
+    OrgCardComponent,
+    OrgViewComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,7 @@ const appRoutes: Routes = [
   providers: [
     ProductService,
     UserService,
+    OrgService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingService,
