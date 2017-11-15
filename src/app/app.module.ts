@@ -21,11 +21,20 @@ import { OrgSearchComponent } from './orgs/org-search/org-search.component';
 import { OrgCardComponent } from './orgs/org-card/org-card.component';
 import { OrgViewComponent } from './orgs/org-view/org-view.component';
 import { OrgService } from './orgs/shared/org.service';
+import { RepoViewComponent } from './repos/repo-view/repo-view.component';
+import { RepoListComponent } from './repos/repo-list/repo-list.component';
+import { ProtectedComponent } from './protected/protected.component';
+import { AuthGuardService } from './shared/auth-guard.service';
+import { AuthService } from './shared/auth.service';
+import { AuthCallbackComponent } from './shared/auth-callback/auth-callback.component';
 
 
 const appRoutes: Routes = [
+  { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuardService] },
   { path: 'home', component: HomeComponent },
-  { path: 'org-search', component: OrgSearchComponent }
+  { path: 'org-search', component: OrgSearchComponent },
+  { path: 'repos/:name', component: RepoListComponent },
+  { path: 'auth-callback', component: AuthCallbackComponent }
 ];
 
 @NgModule({
@@ -38,7 +47,11 @@ const appRoutes: Routes = [
     UserListComponent,
     OrgSearchComponent,
     OrgCardComponent,
-    OrgViewComponent
+    OrgViewComponent,
+    RepoViewComponent,
+    RepoListComponent,
+    ProtectedComponent,
+    AuthCallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +70,9 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingService,
       multi: true
-    }
+    },
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

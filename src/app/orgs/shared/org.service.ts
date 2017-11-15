@@ -1,9 +1,11 @@
   import { Injectable } from '@angular/core';
   import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-  import { catchError, tap } from 'rxjs/operators';
+  import { catchError, tap, map } from 'rxjs/operators';
   import { Observable } from 'rxjs/Observable';
   import 'rxjs/add/observable/throw';
   import { IOrg } from '../shared/org';
+  import { IRepo } from '../../shared/repo';
+import { take } from 'rxjs/operators/take';
   
   @Injectable()
   export class OrgService {
@@ -18,6 +20,16 @@
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)
         );
+    }
+
+    getOrgRepos(orgName: string): Observable<IRepo[]> {
+      return this.httpClient.get<IRepo[]>(this.orgApiUrl + orgName + '/repos?per_page=1000')
+      .pipe(
+        map(data => data.sort(function(a, b) { return b.stargazers_count - a.stargazers_count; })),
+        // take(100),
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
     }
 
     private handleError(err: HttpErrorResponse) {
