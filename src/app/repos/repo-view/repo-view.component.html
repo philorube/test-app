@@ -1,14 +1,13 @@
 <div class="card card-style">
+  <a href="{{ repo.html_url }}" target="_blank">
+    <img class="card-img-top" src="{{ repo.owner.avatar_url }}" alt="" />
+  </a>
+  <div class="card-body">
     <a href="{{ repo.html_url }}" target="_blank">
-      <img class="card-img-top" src="{{ repo.owner.avatar_url }}" alt="" />
+      <h4 class="card-title">{{ repo.name }}</h4>
     </a>
-    <div class="card-body">
-      <a href="{{ repo.html_url }}" target="_blank">
-        <h4 class="card-title">{{ repo.name }}</h4>
-      </a>
-    </div>
-    <div class="card-footer">
-      Stars: {{ repo.stargazers_count }}
-    </div>
   </div>
-  
+  <div class="card-footer">
+    Stars: {{ repo.stargazers_count }}
+  </div>
+</div>

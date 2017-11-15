@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { AuthService } from '../shared/auth.service';
+import { User } from 'oidc-client';
+
 @Component({
   selector: 'app-protected',
   templateUrl: './protected.component.html',
@@ -8,9 +11,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProtectedComponent implements OnInit {
 
-  constructor() { }
+  profile: any;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.profile = this.authService.getClaims();
+    console.log(JSON.stringify(this.profile));
   }
 
 }

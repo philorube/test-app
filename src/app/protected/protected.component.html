@@ -1,3 +1,16 @@
-<p>
-  protected works!
-</p>
+<div class="card card-style">
+  <a href="{{ profile.name }}" target="_blank">
+    <!--<img class="card-img-top" src="{{ repo.owner.avatar_url }}" alt="" />-->
+  </a>
+  <div class="card-body">
+      <h4 class="card-title">{{ profile.name }}</h4>
+      <span>
+        {{ profile.address.street_address }}
+        {{ profile.address.locality }} {{ profile.address.country }}
+        {{ profile.address.postal_code }}
+      </span>
+  </div>
+  <div class="card-footer">
+    Email: <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+  </div>
+</div>

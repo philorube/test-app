@@ -32,6 +32,8 @@ export class AuthService {
   completeAuthentication(): Promise<void> {
     return this.manager.signinRedirectCallback().then(user => {
         this.user = user;
+
+        console.log(JSON.stringify(this.user));
     });
   }
 }
@@ -43,7 +45,7 @@ export function getClientSettings(): UserManagerSettings {
       redirect_uri: 'http://localhost:4200/auth-callback',
       post_logout_redirect_uri: 'http://localhost:4200/',
       response_type:"id_token token",
-      scope:"openid profile api1",
+      scope: 'openid profile address email api1',
       filterProtocolClaims: true,
       loadUserInfo: true
   };
