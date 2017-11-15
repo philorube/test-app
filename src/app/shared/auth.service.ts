@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
 
 @Injectable()
@@ -6,10 +6,17 @@ export class AuthService {
 
   private manager = new UserManager(getClientSettings());
   private user: User = null;
+  userLoadedEvent: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() {
     this.manager.getUser().then(user => {
       this.user = user;
+      this.userLoadedEvent.emit(user);
+    });
+
+    this.manager.events.addUserLoaded((user) => {
+      this.user = user;
+	 // this.loggedIn = !(user === undefined);
     });
   }
 
