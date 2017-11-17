@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.profile = this.authService.userLoadedEvent
     .subscribe(user => {
-      this.profile = user.profile;
+      if (user) {
+        this.profile = user.profile;
+      }
     });
   }
 

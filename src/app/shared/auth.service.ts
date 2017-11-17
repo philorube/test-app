@@ -11,11 +11,12 @@ export class AuthService {
   constructor() {
     this.manager.getUser().then(user => {
       this.user = user;
-      this.userLoadedEvent.emit(user);
+     // this.userLoadedEvent.emit(user);
     });
 
     this.manager.events.addUserLoaded((user) => {
       this.user = user;
+      this.userLoadedEvent.emit(user);
 	 // this.loggedIn = !(user === undefined);
     });
   }
