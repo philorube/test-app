@@ -19,15 +19,13 @@ export class AppComponent implements OnInit {
   profile: any;
 
   constructor(private authService: AuthService) {
+    this.authService.getSigninRedirectCallbackPromise()
+      .then(user => {
+        this.profile = user.profile;
+      });
   }
 
   ngOnInit() {
-    this.profile = this.authService.userLoadedEvent
-    .subscribe(user => {
-      if (user) {
-        this.profile = user.profile;
-      }
-    });
   }
 
   onHidden(): void {
