@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
   selector: 'app-root',
@@ -19,14 +20,16 @@ export class AppComponent implements OnInit {
   profile: any;
 
   constructor(private authService: AuthService) {
-    this.authService.getSigninRedirectCallbackPromise()
-      .then(user => {
+    if (this.authService.getClaims()) {
+      this.profile = this.authService.getClaims();
+    } else {
+      this.authService.getSigninRedirectCallbackPromise().then(user => {
         this.profile = user.profile;
       });
+    }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onHidden(): void {
     console.log('Dropdown is hidden');

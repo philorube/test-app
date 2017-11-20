@@ -24,7 +24,7 @@
     </ul>
     <ul class="navbar-nav">
       <li>
-        <span>Hi, {{ profile?.name }}!</span>
+        <span *ngIf="profile">Hi, {{ profile?.name }}!</span>
       </li>
     </ul>
   </div>
