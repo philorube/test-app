@@ -5,7 +5,7 @@ export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS';
 
 export class LoadUsersAction {
     readonly type = LOAD_USERS;
-    constructor(){}
+    constructor() { }
 }
 
 export class LoadUsersSuccessAction {
