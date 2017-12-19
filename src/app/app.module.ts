@@ -27,6 +27,8 @@ import { ProtectedComponent } from './protected/protected.component';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { AuthService } from './shared/auth.service';
 import { AuthCallbackComponent } from './shared/auth-callback/auth-callback.component';
+import { StoreModule } from '@ngrx/store';
+import { usersReducer } from './reducers/users.reducer';
 
 
 const appRoutes: Routes = [
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    StoreModule.forRoot({users: usersReducer})
   ],
   providers: [
     ProductService,

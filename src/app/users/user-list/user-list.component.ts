@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../shared/user.service';
-import { IUser } from '../shared/user';
+import { User } from '../shared/user';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../shared/app-state';
 
 @Component({
   selector: 'app-user-list',
@@ -10,8 +12,8 @@ import { IUser } from '../shared/user';
 })
 export class UserListComponent implements OnInit {
 
-  users: IUser[];
-  filteredUsers: IUser[];
+  users: User[];
+  filteredUsers: User[];
   errorMessage: string;
 
   _filterString: string;
@@ -23,13 +25,13 @@ export class UserListComponent implements OnInit {
     this.filteredUsers = this.filterString ? this.performFilter(this.filterString) : this.users;
   }
 
-  constructor(private userService: UserService) { 
+  constructor(private store: Store<AppState>) {
     this.filterString = '';
   }
 
-  performFilter(filterBy: string): IUser[] {
+  performFilter(filterBy: string): User[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.users.filter((user: IUser) =>
+    return this.users.filter((user: User) =>
       user.login.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 

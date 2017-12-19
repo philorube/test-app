@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { IUser } from '../shared/user';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +9,7 @@ import { IUser } from '../shared/user';
 })
 export class UserComponent implements OnInit {
 
-  @Input() user: IUser;
+  @Input() user: User;
 
   constructor() { }
 

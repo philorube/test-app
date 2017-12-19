@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Profile } from 'selenium-webdriver/firefox';
+import { environment } from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(environment.apiUrl);
+    console.log('AWS KEY: ');
+  }
 
   onHidden(): void {
     console.log('Dropdown is hidden');
