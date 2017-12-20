@@ -21,13 +21,13 @@ export class AppComponent implements OnInit {
   profile: any;
 
   constructor(private authService: AuthService) {
-    if (this.authService.getClaims()) {
+    /* if (this.authService.getClaims()) {
       this.profile = this.authService.getClaims();
     } else {
       this.authService.getSigninRedirectCallbackPromise().then(user => {
         this.profile = user.profile;
       });
-    }
+    } */
   }
 
   ngOnInit() {

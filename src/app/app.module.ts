@@ -29,6 +29,8 @@ import { AuthService } from './shared/auth.service';
 import { AuthCallbackComponent } from './shared/auth-callback/auth-callback.component';
 import { StoreModule } from '@ngrx/store';
 import { usersReducer } from './reducers/users.reducer';
+import { UserEffectsService } from './effects/users.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 
 const appRoutes: Routes = [
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
       appRoutes
     ),
     BsDropdownModule.forRoot(),
-    StoreModule.forRoot({users: usersReducer})
+    StoreModule.forRoot({users: usersReducer}),
+    EffectsModule.forRoot([UserEffectsService])
   ],
   providers: [
     ProductService,

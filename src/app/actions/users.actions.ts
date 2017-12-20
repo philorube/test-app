@@ -1,18 +1,23 @@
 import { User } from '../users/shared/user';
 
-export const LOAD_USERS = 'LOAD_USERS';
-export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS';
+export enum UserActionTypes {
+    LoadUsers = 'Load Users',
+    LoadUsersSuccess = 'Load Users Success'
+}
+
+// export const LOAD_USERS = 'LOAD_USERS';
+// export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS';
 
 export class LoadUsersAction {
-    readonly type = LOAD_USERS;
+    readonly type = UserActionTypes.LoadUsers;
     constructor() { }
 }
 
 export class LoadUsersSuccessAction {
-    readonly type = LOAD_USERS_SUCCESS;
+    readonly type = UserActionTypes.LoadUsersSuccess;
     constructor(public payload: User[]) { }
 }
 
-export type Action =
+export type UserActions =
     LoadUsersAction
     | LoadUsersSuccessAction;

@@ -1,8 +1,8 @@
-import * as userActions from './../actions/users.actions'
+import { UserActionTypes, UserActions } from './../actions/users.actions';
 
-export function usersReducer(state = [], action: userActions.Action) {
-    switch(action.type) {
-        case userActions.LOAD_USERS_SUCCESS: {
+export function usersReducer(state = [], action: UserActions) {
+    switch (action.type) {
+        case UserActionTypes.LoadUsersSuccess: {
             return action.payload;
         }
         default : {
