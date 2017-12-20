@@ -44,12 +44,12 @@ export class UserListComponent implements OnInit {
     ); */
   }
 
-  performFilter(filterBy: string): Observable<any> {
+  /* performFilter(filterBy: string): Observable<any> {
     filterBy = filterBy.toLocaleLowerCase();
     return this.users;
-    /* .filter((user: User) =>
-      user.login.toLocaleLowerCase().indexOf(filterBy) !== -1); */
-  }
+     .filter((user: User) =>
+      user.login.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  } */
 
   getUsers() {
     this.store.dispatch(new userActions.LoadUsersAction());

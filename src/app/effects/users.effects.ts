@@ -23,12 +23,10 @@ export class UserEffectsService {
     @Effect()
     loadUsers$: Observable<Action> = this.actions
       .ofType(UserActionTypes.LoadUsers)
-      .switchMap(() =>
-        this.userService
-          .getUsers()
-          .map((books: User[]) => new LoadUsersSuccessAction(books))
-          .catch(error => of(console.log(error))
-          )
+      .switchMap(() => {
+            return this.userService.getUsers()
+                .map((books: User[]) => new LoadUsersSuccessAction(books));
+      }
     );
 
 

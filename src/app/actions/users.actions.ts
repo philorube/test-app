@@ -1,4 +1,5 @@
 import { User } from '../users/shared/user';
+import { Action } from '@ngrx/store';
 
 export enum UserActionTypes {
     LoadUsers = 'Load Users',
@@ -8,12 +9,12 @@ export enum UserActionTypes {
 // export const LOAD_USERS = 'LOAD_USERS';
 // export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS';
 
-export class LoadUsersAction {
+export class LoadUsersAction implements Action {
     readonly type = UserActionTypes.LoadUsers;
     constructor() { }
 }
 
-export class LoadUsersSuccessAction {
+export class LoadUsersSuccessAction implements Action {
     readonly type = UserActionTypes.LoadUsersSuccess;
     constructor(public payload: User[]) { }
 }

@@ -13,11 +13,8 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://api.github.com/repos/microsoft/typescript/contributors')
-      .pipe(
-        map(data => data),
-        tap(data => console.log('All: ' + JSON.stringify(data))),
-        catchError(this.handleError)
-      );
+        .map(data => data)
+        .catch(this.handleError);
   }
 
   private handleError(err: HttpErrorResponse) {
